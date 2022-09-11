@@ -14,6 +14,12 @@
 # EXTERNAL cache entries
 ########################
 
+//Build shared libraries
+BUILD_SHARED_LIBS:BOOL=ON
+
+//Build voice support
+BUILD_VOICE_SUPPORT:BOOL=ON
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=CMAKE_ADDR2LINE-NOTFOUND
 
@@ -81,11 +87,59 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
+//User executables (bin)
+CMAKE_INSTALL_BINDIR:PATH=bin
+
+//Read-only architecture-independent data (DATAROOTDIR)
+CMAKE_INSTALL_DATADIR:PATH=
+
+//Read-only architecture-independent data root (share)
+CMAKE_INSTALL_DATAROOTDIR:PATH=share
+
+//Documentation root (DATAROOTDIR/doc/PROJECT_NAME)
+CMAKE_INSTALL_DOCDIR:PATH=
+
+//C header files (include)
+CMAKE_INSTALL_INCLUDEDIR:PATH=include
+
+//Info documentation (DATAROOTDIR/info)
+CMAKE_INSTALL_INFODIR:PATH=
+
+//Object code libraries (lib)
+CMAKE_INSTALL_LIBDIR:PATH=lib
+
+//Program executables (libexec)
+CMAKE_INSTALL_LIBEXECDIR:PATH=libexec
+
+//Locale-dependent data (DATAROOTDIR/locale)
+CMAKE_INSTALL_LOCALEDIR:PATH=
+
+//Modifiable single-machine data (var)
+CMAKE_INSTALL_LOCALSTATEDIR:PATH=var
+
+//Man documentation (DATAROOTDIR/man)
+CMAKE_INSTALL_MANDIR:PATH=
+
 //Path to a program.
 CMAKE_INSTALL_NAME_TOOL:FILEPATH=/usr/bin/install_name_tool
 
+//C header files for non-gcc (/usr/include)
+CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
+
+//Run-time variable data (LOCALSTATEDIR/run)
+CMAKE_INSTALL_RUNSTATEDIR:PATH=
+
+//System admin executables (sbin)
+CMAKE_INSTALL_SBINDIR:PATH=sbin
+
+//Modifiable architecture-independent data (com)
+CMAKE_INSTALL_SHAREDSTATEDIR:PATH=com
+
+//Read-only single-machine data (etc)
+CMAKE_INSTALL_SYSCONFDIR:PATH=etc
 
 //Path to a program.
 CMAKE_LINKER:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld
@@ -140,7 +194,22 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Main_Bot
+CMAKE_PROJECT_NAME:STATIC=Main-Bot
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=10.0.20
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=10
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=20
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib
@@ -204,6 +273,60 @@ CMAKE_STRIP:FILEPATH=/Applications/Xcode.app/Contents/Developer/Toolchains/Xcode
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Enable to build RPM source packages
+CPACK_SOURCE_RPM:BOOL=OFF
+
+//Enable to build TBZ2 source packages
+CPACK_SOURCE_TBZ2:BOOL=ON
+
+//Enable to build TGZ source packages
+CPACK_SOURCE_TGZ:BOOL=ON
+
+//Enable to build TXZ source packages
+CPACK_SOURCE_TXZ:BOOL=ON
+
+//Enable to build TZ source packages
+CPACK_SOURCE_TZ:BOOL=ON
+
+//Enable to build ZIP source packages
+CPACK_SOURCE_ZIP:BOOL=OFF
+
+//Build the test program
+DPP_BUILD_TEST:BOOL=ON
+
+//Experimental support for C++20 coroutines
+DPP_CORO:BOOL=OFF
+
+//No VCPKG
+DPP_NO_VCPKG:BOOL=OFF
+
+//Value Computed by CMake
+Devora-Main-Bot_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug
+
+//Value Computed by CMake
+Devora-Main-Bot_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Devora-Main-Bot_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot
+
+//Git command line client
+GIT_EXECUTABLE:FILEPATH=/usr/bin/git
+
+//Path to a program.
+LDCONFIG_EXECUTABLE:FILEPATH=LDCONFIG_EXECUTABLE-NOTFOUND
+
+//Path to a library.
+LIBM:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/libm.tbd
+
+//Value Computed by CMake
+Main-Bot_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug
+
+//Value Computed by CMake
+Main-Bot_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Main-Bot_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot
+
 //Value Computed by CMake
 Main_Bot_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug
 
@@ -212,6 +335,63 @@ Main_Bot_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 Main_Bot_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot
+
+//Path to a library.
+OPENSSL_CRYPTO_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl/lib/libcrypto.dylib
+
+//Path to a file.
+OPENSSL_INCLUDE_DIR:PATH=/opt/homebrew/opt/openssl/include
+
+//Path to a library.
+OPENSSL_SSL_LIBRARY:FILEPATH=/opt/homebrew/opt/openssl/lib/libssl.dylib
+
+//Path to a file.
+OPUS_INCLUDE_DIRS:PATH=/opt/homebrew/include
+
+//Path to a library.
+OPUS_LIBRARIES:FILEPATH=/opt/homebrew/lib/libopus.dylib
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
+
+//Run ldconfig after installation
+RUN_LDCONFIG:BOOL=ON
+
+//Path to a file.
+ZLIB_INCLUDE_DIR:PATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include
+
+//Path to a library.
+ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+ZLIB_LIBRARY_RELEASE:FILEPATH=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/libz.tbd
+
+//Value Computed by CMake
+libdpp_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/libs/DPP
+
+//Value Computed by CMake
+libdpp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+libdpp_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Main-Bot/libs/DPP
+
+//Path to a library.
+pkgcfg_lib_sodium_PKG_sodium:FILEPATH=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib
+
+//Path to a file.
+sodium_INCLUDE_DIR:PATH=/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+
+//Path to a library.
+sodium_LIBRARY_DEBUG:FILEPATH=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib
+
+//Path to a library.
+sodium_LIBRARY_RELEASE:FILEPATH=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib
+
+//enable to statically link against sodium
+sodium_USE_STATIC_LIBS:BOOL=OFF
 
 
 ########################
@@ -286,11 +466,47 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
+//Test CMAKE_HAVE_LIBC_PTHREAD
+CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
+//Have include pthread.h
+CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/Users/tommy31/Desktop/Devora/Main-Bot
+//ADVANCED property for variable: CMAKE_INSTALL_BINDIR
+CMAKE_INSTALL_BINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATADIR
+CMAKE_INSTALL_DATADIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DATAROOTDIR
+CMAKE_INSTALL_DATAROOTDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_DOCDIR
+CMAKE_INSTALL_DOCDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INCLUDEDIR
+CMAKE_INSTALL_INCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_INFODIR
+CMAKE_INSTALL_INFODIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBDIR
+CMAKE_INSTALL_LIBDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LIBEXECDIR
+CMAKE_INSTALL_LIBEXECDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALEDIR
+CMAKE_INSTALL_LOCALEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_LOCALSTATEDIR
+CMAKE_INSTALL_LOCALSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_MANDIR
+CMAKE_INSTALL_MANDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_INSTALL_NAME_TOOL
 CMAKE_INSTALL_NAME_TOOL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_OLDINCLUDEDIR
+CMAKE_INSTALL_OLDINCLUDEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_RUNSTATEDIR
+CMAKE_INSTALL_RUNSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SBINDIR
+CMAKE_INSTALL_SBINDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SHAREDSTATEDIR
+CMAKE_INSTALL_SHAREDSTATEDIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CMAKE_INSTALL_SYSCONFDIR
+CMAKE_INSTALL_SYSCONFDIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER
 CMAKE_LINKER-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_MODULE_LINKER_FLAGS
@@ -306,7 +522,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -349,4 +565,132 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_RPM
+CPACK_SOURCE_RPM-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TBZ2
+CPACK_SOURCE_TBZ2-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TGZ
+CPACK_SOURCE_TGZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TXZ
+CPACK_SOURCE_TXZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_TZ
+CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CPACK_SOURCE_ZIP
+CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
+//Details about finding OpenSSL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/opt/openssl/lib/libcrypto.dylib][/opt/homebrew/opt/openssl/include][c ][v3.0.5()]
+//Details about finding Opus
+FIND_PACKAGE_MESSAGE_DETAILS_Opus:INTERNAL=[/opt/homebrew/include][/opt/homebrew/lib/libopus.dylib;/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/libm.tbd][1][v()]
+//Details about finding Threads
+FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
+//Details about finding ZLIB
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/lib/libz.tbd][/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include][v1.2.11()]
+//Details about finding sodium
+FIND_PACKAGE_MESSAGE_DETAILS_sodium:INTERNAL=[/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib][/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib][/opt/homebrew/Cellar/libsodium/1.0.18_1/include][v1.0.18()]
+//ADVANCED property for variable: GIT_EXECUTABLE
+GIT_EXECUTABLE-ADVANCED:INTERNAL=1
+//Have symbol prctl
+HAVE_PRCTL:INTERNAL=
+//Have symbol pthread_setname_np
+HAVE_PTHREAD_SETNAME_NP:INTERNAL=1
+//Test HAVE_SINGLE_PARAMETER_SETNAME_NP
+HAVE_SINGLE_PARAMETER_SETNAME_NP:INTERNAL=1
+//Test HAVE_TWO_PARAMETER_SETNAME_NP
+HAVE_TWO_PARAMETER_SETNAME_NP:INTERNAL=
+//ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
+OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_INCLUDE_DIR
+OPENSSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_SSL_LIBRARY
+OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPUS_INCLUDE_DIRS
+OPUS_INCLUDE_DIRS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPUS_LIBRARIES
+OPUS_LIBRARIES-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_INCLUDE_DIR
+ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
+ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
+ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//CMAKE_INSTALL_PREFIX during last run
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/usr/local
+_OPENSSL_CFLAGS:INTERNAL=
+_OPENSSL_CFLAGS_I:INTERNAL=
+_OPENSSL_CFLAGS_OTHER:INTERNAL=
+_OPENSSL_FOUND:INTERNAL=
+_OPENSSL_INCLUDEDIR:INTERNAL=
+_OPENSSL_LIBDIR:INTERNAL=
+_OPENSSL_LIBS:INTERNAL=
+_OPENSSL_LIBS_L:INTERNAL=
+_OPENSSL_LIBS_OTHER:INTERNAL=
+_OPENSSL_LIBS_PATHS:INTERNAL=
+_OPENSSL_MODULE_NAME:INTERNAL=
+_OPENSSL_PREFIX:INTERNAL=
+_OPENSSL_STATIC_CFLAGS:INTERNAL=
+_OPENSSL_STATIC_CFLAGS_I:INTERNAL=
+_OPENSSL_STATIC_CFLAGS_OTHER:INTERNAL=
+_OPENSSL_STATIC_LIBDIR:INTERNAL=
+_OPENSSL_STATIC_LIBS:INTERNAL=
+_OPENSSL_STATIC_LIBS_L:INTERNAL=
+_OPENSSL_STATIC_LIBS_OTHER:INTERNAL=
+_OPENSSL_STATIC_LIBS_PATHS:INTERNAL=
+_OPENSSL_VERSION:INTERNAL=
+_OPENSSL_openssl_INCLUDEDIR:INTERNAL=
+_OPENSSL_openssl_LIBDIR:INTERNAL=
+_OPENSSL_openssl_PREFIX:INTERNAL=
+_OPENSSL_openssl_VERSION:INTERNAL=
+__pkg_config_arguments_sodium_PKG:INTERNAL=QUIET;libsodium
+__pkg_config_checked__OPENSSL:INTERNAL=1
+__pkg_config_checked_sodium_PKG:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_sodium_PKG_sodium
+pkgcfg_lib_sodium_PKG_sodium-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib
+//ADVANCED property for variable: sodium_INCLUDE_DIR
+sodium_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: sodium_LIBRARY_DEBUG
+sodium_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: sodium_LIBRARY_RELEASE
+sodium_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+sodium_PKG_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+sodium_PKG_CFLAGS_I:INTERNAL=
+sodium_PKG_CFLAGS_OTHER:INTERNAL=
+sodium_PKG_FOUND:INTERNAL=1
+sodium_PKG_INCLUDEDIR:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+sodium_PKG_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+sodium_PKG_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/libsodium/1.0.18_1/lib;-lsodium
+sodium_PKG_LDFLAGS_OTHER:INTERNAL=
+sodium_PKG_LIBDIR:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib
+sodium_PKG_LIBRARIES:INTERNAL=sodium
+sodium_PKG_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib
+sodium_PKG_LIBS:INTERNAL=
+sodium_PKG_LIBS_L:INTERNAL=
+sodium_PKG_LIBS_OTHER:INTERNAL=
+sodium_PKG_LIBS_PATHS:INTERNAL=
+sodium_PKG_MODULE_NAME:INTERNAL=libsodium
+sodium_PKG_PREFIX:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1
+sodium_PKG_STATIC_CFLAGS:INTERNAL=-I/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+sodium_PKG_STATIC_CFLAGS_I:INTERNAL=
+sodium_PKG_STATIC_CFLAGS_OTHER:INTERNAL=
+sodium_PKG_STATIC_INCLUDE_DIRS:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/include
+sodium_PKG_STATIC_LDFLAGS:INTERNAL=-L/opt/homebrew/Cellar/libsodium/1.0.18_1/lib;-lsodium;-pthread
+sodium_PKG_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
+sodium_PKG_STATIC_LIBDIR:INTERNAL=
+sodium_PKG_STATIC_LIBRARIES:INTERNAL=sodium
+sodium_PKG_STATIC_LIBRARY_DIRS:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib
+sodium_PKG_STATIC_LIBS:INTERNAL=
+sodium_PKG_STATIC_LIBS_L:INTERNAL=
+sodium_PKG_STATIC_LIBS_OTHER:INTERNAL=
+sodium_PKG_STATIC_LIBS_PATHS:INTERNAL=
+sodium_PKG_VERSION:INTERNAL=1.0.18
+sodium_PKG_libsodium_INCLUDEDIR:INTERNAL=
+sodium_PKG_libsodium_LIBDIR:INTERNAL=
+sodium_PKG_libsodium_PREFIX:INTERNAL=
+sodium_PKG_libsodium_VERSION:INTERNAL=
+//internal change tracking variable
+sodium_USE_STATIC_LIBS_LAST:INTERNAL=OFF
 

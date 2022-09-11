@@ -248,3 +248,74 @@ Parsed CXX implicit link information from above output:
   implicit fwks: [/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks]
 
 
+Determining if the pthread_setname_np exist passed with the following output:
+Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_26d39 && [1/2] Building CXX object CMakeFiles/cmTC_26d39.dir/CheckSymbolExists.cxx.o
+[2/2] Linking CXX executable cmTC_26d39
+
+
+File /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_setname_np
+  return ((int*)(&pthread_setname_np))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Performing C++ SOURCE FILE Test HAVE_SINGLE_PARAMETER_SETNAME_NP succeeded with the following output:
+Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_9e582 && [1/2] Building CXX object CMakeFiles/cmTC_9e582.dir/src.cxx.o
+[2/2] Linking CXX executable cmTC_9e582
+
+
+Source file was:
+
+	#include <thread>
+	int main() {
+		pthread_setname_np("ThreadName");
+		return 0;
+	}
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_6b617 && [1/2] Building C object CMakeFiles/cmTC_6b617.dir/CheckIncludeFile.c.o
+[2/2] Linking C executable cmTC_6b617
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD succeeded with the following output:
+Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_464eb && [1/2] Building C object CMakeFiles/cmTC_464eb.dir/src.c.o
+[2/2] Linking C executable cmTC_464eb
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
