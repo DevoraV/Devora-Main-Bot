@@ -1,0 +1,3 @@
+/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/Main_Bot.dir
+/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/rebuild_cache.dir
