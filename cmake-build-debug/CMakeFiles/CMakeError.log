@@ -21,19 +21,20 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
 Determining if the prctl exist failed with the following output:
-Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_f7586 && [1/2] Building CXX object CMakeFiles/cmTC_f7586.dir/CheckSymbolExists.cxx.o
-FAILED: CMakeFiles/cmTC_f7586.dir/CheckSymbolExists.cxx.o 
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -MD -MT CMakeFiles/cmTC_f7586.dir/CheckSymbolExists.cxx.o -MF CMakeFiles/cmTC_f7586.dir/CheckSymbolExists.cxx.o.d -o CMakeFiles/cmTC_f7586.dir/CheckSymbolExists.cxx.o -c /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
-/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:10: fatal error: 'sys/prctl.h' file not found
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ce338/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ce338.dir/build.make CMakeFiles/cmTC_ce338.dir/build
+Building CXX object CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -MD -MT CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o -MF CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o.d -o CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o -c /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:10: fatal error: 'sys/prctl.h' file not found
 #include <sys/prctl.h>
          ^~~~~~~~~~~~~
 1 error generated.
-ninja: build stopped: subcommand failed.
+make[1]: *** [CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_ce338/fast] Error 2
 
 
-File /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+File /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
 /* */
 #include <sys/prctl.h>
 
@@ -47,26 +48,3 @@ int main(int argc, char** argv)
   return 0;
 #endif
 }
-Performing C++ SOURCE FILE Test HAVE_TWO_PARAMETER_SETNAME_NP failed with the following output:
-Change Dir: /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
-
-Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja cmTC_d8f90 && [1/2] Building CXX object CMakeFiles/cmTC_d8f90.dir/src.cxx.o
-FAILED: CMakeFiles/cmTC_d8f90.dir/src.cxx.o 
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -DHAVE_TWO_PARAMETER_SETNAME_NP  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -MD -MT CMakeFiles/cmTC_d8f90.dir/src.cxx.o -MF CMakeFiles/cmTC_d8f90.dir/src.cxx.o.d -o CMakeFiles/cmTC_d8f90.dir/src.cxx.o -c /Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx
-/Users/tommy31/Desktop/Devora/Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/src.cxx:4:3: error: no matching function for call to 'pthread_setname_np'
-                pthread_setname_np(pthread_self(), "ThreadName");
-                ^~~~~~~~~~~~~~~~~~
-/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/usr/include/pthread.h:510:5: note: candidate function not viable: requires 1 argument, but 2 were provided
-int     pthread_setname_np(const char*);
-        ^
-1 error generated.
-ninja: build stopped: subcommand failed.
-
-
-Source file was:
-
-	#include <thread>
-	int main() {
-		pthread_setname_np(pthread_self(), "ThreadName");
-		return 0;
-	}

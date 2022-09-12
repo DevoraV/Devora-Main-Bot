@@ -51,7 +51,6 @@ bool checkPerms(dpp::interaction i, dpp::snowflake roleId) {
 
 
 void bot::run(std::string token, std::string prefix) {
-
     dpp::cluster bot(token, dpp::intents::i_all_intents);
 
     dpp::cache<dpp::message> message_cache;
@@ -82,7 +81,7 @@ void bot::run(std::string token, std::string prefix) {
                     set_timestamp(event.command.get_creation_time());
             bot.message_create(dpp::message(event.command.channel_id, rulesEmbed).add_component(
                     dpp::component().add_component(
-                            dpp::component().set_label("Accept rules").
+                            dpp::component().set_label("Verify").
                                     set_type(dpp::cot_button).
                                     set_emoji("✅").
                                     set_style(dpp::cos_primary).
@@ -161,6 +160,8 @@ void bot::run(std::string token, std::string prefix) {
                                     set_id("terraria")
                     )
             ));
+        }else if(event.command.get_command_name() == "lockvc"){
+
         }
     });
     bot.on_button_click([&bot](const dpp::button_click_t& event){
@@ -253,10 +254,82 @@ void bot::run(std::string token, std::string prefix) {
         }else if(event.custom_id == "csgo"){
             if (checkPerms(event.command, Roles->csgo()) == true){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->csgo());
-                event.reply(dpp::message(event.command.channel_id, "Removed CSGO role from you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Removed ``CSGO`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->csgo());
-                event.reply(dpp::message(event.command.channel_id, "Added CSGO role to you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Added ``CSGO`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "valorant"){
+            if (checkPerms(event.command, Roles->valorant()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->valorant());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Valorant`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->valorant());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Valorant`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "genshin"){
+            if (checkPerms(event.command, Roles->genshin()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->genshin());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Genshin Impact`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->genshin());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Genshin Impact`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "cod"){
+            if (checkPerms(event.command, Roles->cod()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->cod());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Call of Duty`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->cod());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Call of Duty`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "battlefield"){
+            if (checkPerms(event.command, Roles->battlefield()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->battlefield());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Battlefield`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->battlefield());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Battlefield`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "darksouls"){
+            if (checkPerms(event.command, Roles->darksouls()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->darksouls());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Darksouls``role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->darksouls());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Darksouls`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "mc"){
+            if (checkPerms(event.command, Roles->minecraft()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->minecraft());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Minecraft`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->minecraft());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Minecraft`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "fallguys"){
+            if (checkPerms(event.command, Roles->fallguys()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->fallguys());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Fall Guys`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->fallguys());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Fall Guys`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "roblox"){
+            if (checkPerms(event.command, Roles->roblox()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->roblox());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Roblox`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->roblox());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Roblox`` role to you!").set_flags(dpp::m_ephemeral));
+            }
+        }else if(event.custom_id == "terraria"){
+            if (checkPerms(event.command, Roles->terraria()) == true){
+                bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->terraria());
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Terraria`` role from you!").set_flags(dpp::m_ephemeral));
+            }else {
+                bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->terraria());
+                event.reply(dpp::message(event.command.channel_id, "Added ``Terraria`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }
     });
@@ -281,11 +354,15 @@ void bot::run(std::string token, std::string prefix) {
                 "test"
         );
 
+
+
+
         std::string v = std::get<std::string>(event.components[0].components[0].value);
         dpp::message m;
+        std::string tChId = "";
 
 
-        bot.channel_create(ticketChannel, [event, &bot, &v](const dpp::confirmation_callback_t &callback){
+        bot.channel_create(ticketChannel, [event, &bot, &v, &tChId, &ticketChannel](const dpp::confirmation_callback_t &callback){
             if (callback.is_error()){
                 std::cerr << "Error : Cannot create channels!";
                 return;
@@ -318,6 +395,8 @@ void bot::run(std::string token, std::string prefix) {
                                         set_id("createTranscript")
                         )
                 )*/);
+                std::string test = std::to_string(ticketChannel.id);
+                tChId.append(test);
             }
         });
         bot.channel_edit_permissions(ticketChannel.id, event.command.usr.id, dpp::p_view_channel | dpp::p_read_message_history | dpp::p_send_messages, 0, true, [event, &bot](const dpp::confirmation_callback_t &callback){
@@ -330,6 +409,20 @@ void bot::run(std::string token, std::string prefix) {
         });
         m.set_content("You have entered: " + v).set_flags(dpp::m_ephemeral);
         event.reply(m);
+
+
+
+        dpp::embed embLog = dpp::embed().
+                set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
+                set_color(dpp::colors::blue).
+                set_title("Ticket created").
+                set_description("Ticket was created by " + event.command.usr.get_mention() + "\n#" + tChId + ">").
+                add_field(
+                "Reason",
+                "test"
+        );
+        bot.message_create(dpp::message(Config->ticketLogs(), embLog));
+
     });
 
     bot.on_ready([&bot](const dpp::ready_t& event){
@@ -339,9 +432,21 @@ void bot::run(std::string token, std::string prefix) {
             dpp::slashcommand ticket("ticket", "creates a ticket", bot.me.id);
             dpp::slashcommand rules("rules", "sends rules", bot.me.id);
             dpp::slashcommand selfroles("selfroles", "sends selfroles embeds", bot.me.id);
+            dpp::slashcommand lockVC("lockVC", "locks your vc", bot.me.id);
+            dpp::slashcommand setMaxUsers("setMaxUsers", "sets the maximum of users in your vc", bot.me.id);
+            setMaxUsers.add_option(
+                    dpp::command_option(dpp::co_integer, "maximum", "maximum users")
+            );
+            dpp::slashcommand kickUser("kickUser", "kicks the user out of your vc", bot.me.id);
+            kickUser.add_option(
+                    dpp::command_option(dpp::co_user, "user", "user to kick")
+            );
             bot.global_command_create(ticket);
             bot.global_command_create(rules);
             bot.global_command_create(selfroles);
+            bot.global_command_create(lockVC);
+            bot.global_command_create(setMaxUsers);
+            bot.global_command_create(kickUser);
         }
     });
 

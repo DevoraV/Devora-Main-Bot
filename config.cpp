@@ -42,6 +42,10 @@ dpp::snowflake config::userRole() {
     return 1018211247176548413;
 }
 
+dpp::snowflake config::ticketLogs() {
+    return 1018232570074370048;
+}
+
 std::string config::pastebin() {
     return "https://pastebin.com/api/api_post.php";
 }

@@ -34,6 +34,7 @@ public:
     dpp::snowflake logChannel();
     dpp::snowflake ticketParent();
     dpp::snowflake userRole();
+    dpp::snowflake ticketLogs();
 };
 
 inline std::unique_ptr<config>Config;
