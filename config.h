@@ -32,6 +32,7 @@ public:
     std::string pastebinApiToken();
 
     dpp::snowflake logChannel();
+    dpp::snowflake welcomeChannel();
     dpp::snowflake ticketParent();
     dpp::snowflake userRole();
     dpp::snowflake ticketLogs();

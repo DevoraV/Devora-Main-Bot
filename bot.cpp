@@ -433,6 +433,7 @@ void bot::run(std::string token, std::string prefix) {
             dpp::slashcommand rules("rules", "sends rules", bot.me.id);
             dpp::slashcommand selfroles("selfroles", "sends selfroles embeds", bot.me.id);
             dpp::slashcommand lockVC("lockVC", "locks your vc", bot.me.id);
+            dpp::slashcommand bundeslaender("selfroles2", "bundesländer", bot.me.id);
             dpp::slashcommand setMaxUsers("setMaxUsers", "sets the maximum of users in your vc", bot.me.id);
             setMaxUsers.add_option(
                     dpp::command_option(dpp::co_integer, "maximum", "maximum users")
@@ -447,7 +448,12 @@ void bot::run(std::string token, std::string prefix) {
             bot.global_command_create(lockVC);
             bot.global_command_create(setMaxUsers);
             bot.global_command_create(kickUser);
+            bot.global_command_create(bundeslaender);
         }
+    });
+
+    bot.on_guild_member_add([&bot](const dpp::guild_member_add_t& event){
+
     });
 
     bot.on_guild_role_create([&bot](const dpp::guild_role_create_t& event){

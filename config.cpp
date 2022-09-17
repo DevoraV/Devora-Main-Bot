@@ -46,6 +46,10 @@ dpp::snowflake config::ticketLogs() {
     return 1018232570074370048;
 }
 
+dpp::snowflake config::welcomeChannel() {
+    return 1020603895040462888;
+}
+
 std::string config::pastebin() {
     return "https://pastebin.com/api/api_post.php";
 }
