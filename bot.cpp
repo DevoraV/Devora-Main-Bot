@@ -160,20 +160,27 @@ void bot::run(std::string token, std::string prefix) {
                                     set_id("terraria")
                     )
             ));
-        }else if(event.command.get_command_name() == "lockvc"){
+        }else if(event.command.get_command_name() == "bundeslaender"){
+            dpp::embed emb = dpp::embed().
+                    set_title("Wähle dein Land/Bundesland aus!").
+                    set_color(dpp::colors::blue).
+                    set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
+                    set_timestamp(event.command.get_creation_time());
+        }
+        else if(event.command.get_command_name() == "lockvc"){
 
         }
     });
     bot.on_button_click([&bot](const dpp::button_click_t& event){
         if (event.custom_id == "createTicket"){
 
-            dpp::interaction_modal_response modal("tckt", "Create a Ticket");
+            dpp::interaction_modal_response modal("tckt", "Erstelle ein Ticket");
             modal.add_component(
                     dpp::component().
-                            set_label("Ticket Reason").
+                            set_label("Ticket Grund").
                             set_id("modla_id").
                             set_type(dpp::cot_text).
-                            set_placeholder("I want to report someone").
+                            set_placeholder("Ich möchte etwas melden!").
                             set_text_style(dpp::text_paragraph).
                             set_min_length(1).
                             set_max_length(200)
@@ -182,7 +189,7 @@ void bot::run(std::string token, std::string prefix) {
 
 
         }else if (event.custom_id == "delTicket"){
-            event.reply(dpp::message(event.command.channel_id, "Ticket will be deleted!").set_flags(dpp::m_ephemeral));
+            event.reply(dpp::message(event.command.channel_id, "Ticket wird gelöscht!").set_flags(dpp::m_ephemeral));
             std::this_thread::sleep_for(std::chrono::milliseconds(5000));
             dpp::snowflake cid = event.command.channel_id;
             bot.channel_delete(cid);
@@ -250,30 +257,30 @@ void bot::run(std::string token, std::string prefix) {
 
         }else if(event.custom_id == "acceptedRules"){
             bot.guild_member_add_role(event.command.guild_id, event.command.usr.id, Config->userRole());
-            event.reply(dpp::message(event.command.channel_id, "Accepted rules!").set_flags(dpp::m_ephemeral));
+            event.reply(dpp::message(event.command.channel_id, "Du hast die Regeln akzeptiert!").set_flags(dpp::m_ephemeral));
         }else if(event.custom_id == "csgo"){
             if (checkPerms(event.command, Roles->csgo()) == true){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->csgo());
-                event.reply(dpp::message(event.command.channel_id, "Removed ``CSGO`` role from you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``CSGO`` aus deinen Rollen enfernt!").set_flags(dpp::m_ephemeral));
             }else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->csgo());
-                event.reply(dpp::message(event.command.channel_id, "Added ``CSGO`` role to you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``CSGO`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "valorant"){
             if (checkPerms(event.command, Roles->valorant()) == true){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->valorant());
-                event.reply(dpp::message(event.command.channel_id, "Removed ``Valorant`` role from you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``Valorant`` aus deinen Rollen entfernt!").set_flags(dpp::m_ephemeral));
             }else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->valorant());
-                event.reply(dpp::message(event.command.channel_id, "Added ``Valorant`` role to you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``Valorant`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "genshin"){
             if (checkPerms(event.command, Roles->genshin()) == true){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->genshin());
-                event.reply(dpp::message(event.command.channel_id, "Removed ``Genshin Impact`` role from you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``Genshin Impact`` aus deinen Rollen entfernt!").set_flags(dpp::m_ephemeral));
             }else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->genshin());
-                event.reply(dpp::message(event.command.channel_id, "Added ``Genshin Impact`` role to you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Ich habe ``Genshin Impact`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "cod"){
             if (checkPerms(event.command, Roles->cod()) == true){
@@ -453,7 +460,15 @@ void bot::run(std::string token, std::string prefix) {
     });
 
     bot.on_guild_member_add([&bot](const dpp::guild_member_add_t& event){
-
+        std::cout << "User joined : " << event.added.get_mention() << std::endl;
+        dpp::embed emb = dpp::embed().
+                set_color(dpp::colors::cyan).
+                set_title("Willkommen!").
+                set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
+                set_image("").
+                set_timestamp(event.added.joined_at).
+                set_description(event.added.get_mention() + " Willkommen auf Devora!");
+        bot.message_create(dpp::message(Config->welcomeChannel(), emb));
     });
 
     bot.on_guild_role_create([&bot](const dpp::guild_role_create_t& event){
