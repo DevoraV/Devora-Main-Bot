@@ -1,5 +1,5 @@
 Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Compiler: /Library/Developer/CommandLineTools/usr/bin/cc 
 Build flags: 
 Id flags:  
 
@@ -10,7 +10,7 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Compiler: /Library/Developer/CommandLineTools/usr/bin/c++ 
 Build flags: 
 Id flags:  
 
@@ -23,15 +23,15 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 Determining if the prctl exist failed with the following output:
 Change Dir: /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_ce338/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_ce338.dir/build.make CMakeFiles/cmTC_ce338.dir/build
-Building CXX object CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk -MD -MT CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o -MF CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o.d -o CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o -c /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_ff220/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_ff220.dir/build.make CMakeFiles/cmTC_ff220.dir/build
+Building CXX object CMakeFiles/cmTC_ff220.dir/CheckSymbolExists.cxx.o
+/Library/Developer/CommandLineTools/usr/bin/c++   -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk -MD -MT CMakeFiles/cmTC_ff220.dir/CheckSymbolExists.cxx.o -MF CMakeFiles/cmTC_ff220.dir/CheckSymbolExists.cxx.o.d -o CMakeFiles/cmTC_ff220.dir/CheckSymbolExists.cxx.o -c /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
 /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:2:10: fatal error: 'sys/prctl.h' file not found
 #include <sys/prctl.h>
          ^~~~~~~~~~~~~
 1 error generated.
-make[1]: *** [CMakeFiles/cmTC_ce338.dir/CheckSymbolExists.cxx.o] Error 1
-make: *** [cmTC_ce338/fast] Error 2
+make[1]: *** [CMakeFiles/cmTC_ff220.dir/CheckSymbolExists.cxx.o] Error 1
+make: *** [cmTC_ff220/fast] Error 2
 
 
 File /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:

@@ -166,6 +166,102 @@ void bot::run(std::string token, std::string prefix) {
                     set_color(dpp::colors::blue).
                     set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
                     set_timestamp(event.command.get_creation_time());
+
+            bot.message_create(dpp::message(event.command.channel_id, emb).add_component(
+                    dpp::component().add_component(
+                            dpp::component().set_label("NRW").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("nrw")
+                            ).add_component(
+                                    dpp::component().set_label("Rheinland-Pfalz").
+                                            set_type(dpp::cot_button).
+                                            set_style(dpp::cos_primary).
+                                            set_id("rlp")
+                                    ).add_component(
+                            dpp::component().set_label("Saarland").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("sl")
+                    ).add_component(
+                            dpp::component().set_label("Bayern").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("b")
+                    ).add_component(
+                            dpp::component().set_label("Baden-Würtemberg").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("bw")
+                    ).add_component(
+                            dpp::component().set_label("Hessen").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("h")
+                    ).add_component(
+                            dpp::component().set_label("Thüringen").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("th")
+                    ).add_component(
+                            dpp::component().set_label("Sachsen").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("s")
+                    ).add_component(
+                            dpp::component().set_label("Sachsen-Anhalt").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("sa")
+                    ).add_component(
+                            dpp::component().set_label("Niedersachsen").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("ns")
+                    ).add_component(
+                            dpp::component().set_label("hamburg").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("hb")
+                    ).add_component(
+                            dpp::component().set_label("bremen").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("br")
+                    ).add_component(
+                            dpp::component().set_label("Berlin").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("bl")
+                    ).add_component(
+                            dpp::component().set_label("Brandenburg").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("bb")
+                    ).add_component(
+                            dpp::component().set_label("Mecklenburg-Vorpommern").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("mv")
+                    ).add_component(
+                            dpp::component().set_label("Schleswig-Holstein").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("sh")
+                    ).add_component(
+                            dpp::component().set_label("Schweiz").
+                                    set_emoji("🇨🇭").
+                                    set_type(dpp::cot_button).
+                                    set_style(dpp::cos_primary).
+                                    set_id("schw")
+                    ).add_component(
+                            dpp::component().set_label("Österreich").
+                                    set_type(dpp::cot_button).
+                                    set_emoji("🇦🇹").
+                                    set_style(dpp::cos_primary).
+                                    set_id("oest")
+                    )
+                    ));
         }
         else if(event.command.get_command_name() == "lockvc"){
 
@@ -338,6 +434,42 @@ void bot::run(std::string token, std::string prefix) {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->terraria());
                 event.reply(dpp::message(event.command.channel_id, "Added ``Terraria`` role to you!").set_flags(dpp::m_ephemeral));
             }
+        }else if(event.custom_id == "nrw"){
+
+        }else if(event.custom_id == "rlp"){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
+        }else if(event.custom_id == ""){
+
         }
     });
 
@@ -368,6 +500,13 @@ void bot::run(std::string token, std::string prefix) {
         dpp::message m;
         std::string tChId = "";
 
+        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_read_message_history, 0);
+        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_view_channel, 0);
+        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_send_messages, 0);
+        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_attach_files, 0);
+
+
+
 
         bot.channel_create(ticketChannel, [event, &bot, &v, &tChId, &ticketChannel](const dpp::confirmation_callback_t &callback){
             if (callback.is_error()){
@@ -383,7 +522,7 @@ void bot::run(std::string token, std::string prefix) {
                         v
                 ).
                         set_footer("Devora x Main by Tommy31", bot.me.get_avatar_url()).
-                        set_timestamp(time(0));
+                        set_timestamp(event.command.get_creation_time());
                 auto channel = std::get<dpp::channel>(callback.value);
                 bot.message_create(dpp::message(channel.id, embn).add_component(
                         dpp::component().add_component(
@@ -404,15 +543,10 @@ void bot::run(std::string token, std::string prefix) {
                 )*/);
                 std::string test = std::to_string(ticketChannel.id);
                 tChId.append(test);
-            }
-        });
-        bot.channel_edit_permissions(ticketChannel.id, event.command.usr.id, dpp::p_view_channel | dpp::p_read_message_history | dpp::p_send_messages, 0, true, [event, &bot](const dpp::confirmation_callback_t &callback){
-            if (callback.is_error()){
-                std::cerr << callback.get_error().message << std::endl;
-                return;
-            }else {
+                bot.message_create(dpp::message(channel.id, embn));
 
             }
+
         });
         m.set_content("You have entered: " + v).set_flags(dpp::m_ephemeral);
         event.reply(m);
@@ -426,7 +560,7 @@ void bot::run(std::string token, std::string prefix) {
                 set_description("Ticket was created by " + event.command.usr.get_mention() + "\n#" + tChId + ">").
                 add_field(
                 "Reason",
-                "test"
+                v
         );
         bot.message_create(dpp::message(Config->ticketLogs(), embLog));
 
@@ -536,6 +670,12 @@ void bot::run(std::string token, std::string prefix) {
                     set_color(dpp::colors::blue);
 
             bot.message_create(dpp::message(event.msg.channel_id, embed).set_reference(event.msg.id));
+        }
+    });
+
+    bot.on_channel_create([&](const dpp::channel_create_t& event){
+        if (event.created->name.find("ticket")){
+            std::cout << "ticket opened!";
         }
     });
     bot.start(false);
