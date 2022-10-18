@@ -477,9 +477,9 @@ void bot::run(std::string token, std::string prefix) {
 
         dpp::channel ticketChannel = dpp::channel().
                 set_name("ticket-" + event.command.usr.username).
+                set_guild_id(event.command.guild_id).
                 set_parent_id(Config->ticketParent());
 
-        ticketChannel.guild_id = event.command.guild_id;
 
 
 
@@ -500,20 +500,19 @@ void bot::run(std::string token, std::string prefix) {
         dpp::message m;
         dpp::snowflake tChId;
 
-        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_read_message_history, 0);
-        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_view_channel, 0);
-        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_send_messages, 0);
-        ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_attach_files, 0);
 
 
 
 
-        bot.channel_create(ticketChannel, [event, &bot, &v, &tChId, &ticketChannel](const dpp::confirmation_callback_t &callback){
+        dpp::snowflake ch;
+        bot.channel_create(ticketChannel, [event, &bot, v, &tChId, &ticketChannel, &ch](const dpp::confirmation_callback_t &callback){
             if (callback.is_error()){
                 std::cerr << "Error : Cannot create channels!";
                 return;
             }else{
-                dpp::embed embn = dpp::embed().
+                auto channel = std::get<dpp::channel>(callback.value);
+                ch = channel.id;
+                dpp::embed embo = dpp::embed().
                         set_title("Ticket").
                         set_description("Created by " + event.command.usr.get_mention()).
                         set_color(dpp::colors::blue).
@@ -522,9 +521,10 @@ void bot::run(std::string token, std::string prefix) {
                         v
                 ).
                         set_footer("Devora x Main by Tommy31", bot.me.get_avatar_url()).
-                        set_timestamp(event.command.get_creation_time());
-                auto channel = std::get<dpp::channel>(callback.value);
-                bot.message_create(dpp::message(channel.id, embn).add_component(
+                        set_timestamp(event.command.get_creation_time()
+                );
+
+                bot.message_create(dpp::message(ch, embo).add_component(
                         dpp::component().add_component(
                                 dpp::component().set_label("Delete Ticket").
                                         set_type(dpp::cot_button).
@@ -533,35 +533,37 @@ void bot::run(std::string token, std::string prefix) {
                                         set_id("delTicket")
                         )
                 )/*.add_component(
-                        dpp::component().add_component(
-                                dpp::component().set_label("Create Transcript").
-                                        set_type(dpp::cot_button).
-                                        set_emoji("📥").
-                                        set_style(dpp::cos_primary).
-                                        set_id("createTranscript")
-                        )
-                )*/);
-                tChId = ticketChannel.id;
-                bot.message_create(dpp::message(tChId, embn));
+                                dpp::component().add_component(
+                                        dpp::component().set_label("Create Transcript").
+                                                set_type(dpp::cot_button).
+                                                set_emoji("📥").
+                                                set_style(dpp::cos_primary).
+                                                set_id("createTranscript")
+                                )
+                        )*/);
 
+                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_read_message_history, 0);
+                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_view_channel, 0);
+                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_send_messages, 0);
+                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_attach_files, 0);
+
+                dpp::embed embLog = dpp::embed().
+                        set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
+                        set_color(dpp::colors::blue).
+                        set_title("Ticket created").
+                        set_description("Ticket was created by " + event.command.usr.get_mention() + "\n<#" + std::to_string(ch) + ">").
+                        add_field(
+                        "Reason",
+                        v
+                );
+                bot.message_create(dpp::message(Config->ticketLogs(), embLog));
             }
 
+
         });
-        m.set_content("You have entered: " + v).set_flags(dpp::m_ephemeral);
+
+        m.set_content("You reason was: `" + v + "`").set_flags(dpp::m_ephemeral);
         event.reply(m);
-
-
-
-        dpp::embed embLog = dpp::embed().
-                set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
-                set_color(dpp::colors::blue).
-                set_title("Ticket created").
-                set_description("Ticket was created by " + event.command.usr.get_mention() + "\n<#" + std::to_string(tChId) + ">").
-                add_field(
-                "Reason",
-                v
-        );
-        bot.message_create(dpp::message(Config->ticketLogs(), embLog));
 
     });
 
