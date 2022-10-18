@@ -478,7 +478,21 @@ void bot::run(std::string token, std::string prefix) {
         dpp::channel ticketChannel = dpp::channel().
                 set_name("ticket-" + event.command.usr.username).
                 set_guild_id(event.command.guild_id).
-                set_parent_id(Config->ticketParent());
+                set_parent_id(Config->ticketParent()
+                );
+
+        dpp::permission_overwrite perm;
+
+        perm.id = event.command.usr.id;
+        perm.type = dpp::ot_member;
+        perm.allow = dpp::p_view_channel +
+                dpp::p_read_message_history +
+                dpp::p_send_messages +
+                dpp::p_attach_files;
+        perm.deny = 0;
+
+        ticketChannel.permission_overwrites.push_back(perm);
+
 
 
 
@@ -542,10 +556,6 @@ void bot::run(std::string token, std::string prefix) {
                                 )
                         )*/);
 
-                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_read_message_history, 0);
-                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_view_channel, 0);
-                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_send_messages, 0);
-                channel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_attach_files, 0);
 
                 dpp::embed embLog = dpp::embed().
                         set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
