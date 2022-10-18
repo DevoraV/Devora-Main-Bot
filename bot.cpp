@@ -498,7 +498,7 @@ void bot::run(std::string token, std::string prefix) {
 
         std::string v = std::get<std::string>(event.components[0].components[0].value);
         dpp::message m;
-        std::string tChId = "";
+        dpp::snowflake tChId;
 
         ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_read_message_history, 0);
         ticketChannel.add_permission_overwrite(event.command.usr.id, dpp::overwrite_type::ot_member, dpp::permissions::p_view_channel, 0);
@@ -541,9 +541,8 @@ void bot::run(std::string token, std::string prefix) {
                                         set_id("createTranscript")
                         )
                 )*/);
-                std::string test = std::to_string(ticketChannel.id);
-                tChId.append(test);
-                bot.message_create(dpp::message(channel.id, embn));
+                tChId = ticketChannel.id;
+                bot.message_create(dpp::message(tChId, embn));
 
             }
 
@@ -557,7 +556,7 @@ void bot::run(std::string token, std::string prefix) {
                 set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
                 set_color(dpp::colors::blue).
                 set_title("Ticket created").
-                set_description("Ticket was created by " + event.command.usr.get_mention() + "\n#" + tChId + ">").
+                set_description("Ticket was created by " + event.command.usr.get_mention() + "\n<#" + std::to_string(tChId) + ">").
                 add_field(
                 "Reason",
                 v

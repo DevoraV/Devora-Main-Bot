@@ -10,8 +10,12 @@ add_executable(${PROJECT_NAME}
         roles.h roles.cpp
         )
 
+set(THREADS_PREFER_PTHREAD_FLAG TRUE)
+find_package(Threads REQUIRED)
+
 target_link_libraries(${PROJECT_NAME}
         dpp
+        ${CMAKE_THREAD_LIBS_INIT}
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
