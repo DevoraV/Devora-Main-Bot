@@ -4,6 +4,18 @@
 -- Sodium [32m1.0.18[m
 -- Detected [32mlibsodium[m and [32mlibopus[m. VOICE support will be [32menabled[m
 -- Building [32mstable[m version [32m10.0.10[m
+-- Using c++ standard c++11
+-- CMake version: 3.22.3
+-- Project version: 3.2.0
+-- Using Stack Protection hardening
+-- CMAKE_CXX_COMPILER '/Library/Developer/CommandLineTools/usr/bin/c++' 'AppleClang' '13.1.6.13160021'
+-- CMAKE_CXX_FLAGS                ' -Wall -Wextra -Wpedantic -Wswitch-enum -Wshadow -Wno-long-long'
+-- CMAKE_CXX_FLAGS_DEBUG          '-g'
+-- Compile sqlite3 from source in subdirectory
+-- Could NOT find cppcheck
+-- SQLITECPP_RUN_DOXYGEN OFF
+-- SQLITECPP_BUILD_EXAMPLES OFF
+-- SQLITECPP_BUILD_TESTS OFF
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug

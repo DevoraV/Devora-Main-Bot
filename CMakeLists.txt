@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(Main-Bot)
 
 add_subdirectory(libs/DPP)
+add_subdirectory(libs/SQLiteCpp)
 
 add_executable(${PROJECT_NAME}
         main.cpp
@@ -13,13 +14,24 @@ add_executable(${PROJECT_NAME}
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
+#find_package (sqlite3)
+#if (SQLITE3_FOUND)
+#    include_directories(${SQLITE3_INCLUDE_DIRS})
+#    target_link_libraries (Main-Bot ${SQLITE3_LIBRARIES})
+#endif (SQLITE3_FOUND)
+
+
 target_link_libraries(${PROJECT_NAME}
         dpp
+        SQLiteCpp
+        dl
+        sqlite3
         ${CMAKE_THREAD_LIBS_INIT}
         )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
         libs/DPP/include
+        libs/SQLiteCpp/include
         )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES

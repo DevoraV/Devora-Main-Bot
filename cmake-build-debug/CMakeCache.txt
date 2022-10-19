@@ -305,6 +305,9 @@ CPACK_SOURCE_TZ:BOOL=ON
 //Enable to build ZIP source packages
 CPACK_SOURCE_ZIP:BOOL=OFF
 
+//Path to a program.
+CPPCHECK_EXECUTABLE:FILEPATH=CPPCHECK_EXECUTABLE-NOTFOUND
+
 //Build the test program
 DPP_BUILD_TEST:BOOL=ON
 
@@ -348,10 +351,82 @@ PKG_CONFIG_ARGN:STRING=
 PKG_CONFIG_EXECUTABLE:FILEPATH=/opt/homebrew/bin/pkg-config
 
 //Path to a program.
+PYTHON_EXECUTABLE:FILEPATH=/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11
+
+//Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 
 //Run ldconfig after installation
 RUN_LDCONFIG:BOOL=ON
+
+//Build examples.
+SQLITECPP_BUILD_EXAMPLES:BOOL=OFF
+
+//Build and run tests.
+SQLITECPP_BUILD_TESTS:BOOL=OFF
+
+//Include config & script files.
+SQLITECPP_INCLUDE_SCRIPT:BOOL=ON
+
+//Add the internal SQLite3 source to the project.
+SQLITECPP_INTERNAL_SQLITE:BOOL=ON
+
+//Run cppcheck C++ static analysis tool.
+SQLITECPP_RUN_CPPCHECK:BOOL=ON
+
+//Run cpplint.py tool for Google C++ StyleGuide.
+SQLITECPP_RUN_CPPLINT:BOOL=ON
+
+//Run Doxygen C++ documentation tool.
+SQLITECPP_RUN_DOXYGEN:BOOL=OFF
+
+//Use Address Sanitizer.
+SQLITECPP_USE_ASAN:BOOL=OFF
+
+//USE Stack Protection hardening.
+SQLITECPP_USE_STACK_PROTECTION:BOOL=ON
+
+//Enable the user definition of a assertion_failed() handler.
+SQLITE_ENABLE_ASSERT_HANDLER:BOOL=OFF
+
+//Enable Column::getColumnOriginName(). Require support from sqlite3
+// library.
+SQLITE_ENABLE_COLUMN_METADATA:BOOL=ON
+
+//Enable JSON1 extension when building internal sqlite3 library.
+SQLITE_ENABLE_JSON1:BOOL=ON
+
+//Enable database encryption API. Not available in the public release
+// of SQLite.
+SQLITE_HAS_CODEC:BOOL=OFF
+
+//Enable omit load extension
+SQLITE_OMIT_LOAD_EXTENSION:BOOL=OFF
+
+//Fallback to forward declaration of legacy struct sqlite3_value
+// (pre SQLite 3.19)
+SQLITE_USE_LEGACY_STRUCT:BOOL=OFF
+
+//Path to a file.
+SQLite3_INCLUDE_DIR:PATH=/Library/Frameworks/Mono.framework/Headers
+
+//Path to a library.
+SQLite3_LIBRARY:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib/libsqlite3.tbd
+
+//Value Computed by CMake
+SQLiteCpp_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/libs/SQLiteCpp
+
+//The directory containing a CMake configuration file for SQLiteCpp.
+SQLiteCpp_DIR:PATH=SQLiteCpp_DIR-NOTFOUND
+
+//Value Computed by CMake
+SQLiteCpp_IS_TOP_LEVEL:STATIC=OFF
+
+//Dependencies for the target
+SQLiteCpp_LIB_DEPENDS:STATIC=general;SQLite::SQLite3;
+
+//Value Computed by CMake
+SQLiteCpp_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/libs/SQLiteCpp
 
 //Path to a file.
 ZLIB_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include
@@ -527,7 +602,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=2
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -586,6 +661,10 @@ CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/opt/openssl/lib/libcrypto.dylib][/opt/homebrew/opt/openssl/include][c ][v3.0.5()]
 //Details about finding Opus
 FIND_PACKAGE_MESSAGE_DETAILS_Opus:INTERNAL=[/opt/homebrew/include][/opt/homebrew/lib/libopus.dylib;/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib/libm.tbd][1][v()]
+//Details about finding PythonInterp
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11][v3.11()]
+//Details about finding SQLite3
+FIND_PACKAGE_MESSAGE_DETAILS_SQLite3:INTERNAL=[/Library/Frameworks/Mono.framework/Headers][/Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/lib/libsqlite3.tbd][v3.26.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
@@ -612,8 +691,14 @@ OPUS_LIBRARIES-ADVANCED:INTERNAL=1
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PYTHON_EXECUTABLE
+PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SQLite3_INCLUDE_DIR
+SQLite3_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SQLite3_LIBRARY
+SQLite3_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_INCLUDE_DIR
 ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_DEBUG

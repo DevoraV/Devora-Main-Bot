@@ -16,23 +16,26 @@
 
 #include "bot.h"
 
-// Project
+/// Project
 #include "config.h"
 #include "roles.h"
 
-// Libraries
+/// Libraries
 #include <iostream>
 #include <time.h>
 #include <chrono>
 #include <thread>
 #include <stdio.h>
 
+/// SQL
+#include <SQLiteCpp/SQLiteCpp.h>
 
-// DPP
+/// DPP
 #include <dpp/dpp.h>
 #include <dpp/message.h>
 #include <dpp/nlohmann/json.hpp>
 #include <dpp/restrequest.h>
+
 
 static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
 {
@@ -438,37 +441,37 @@ void bot::run(std::string token, std::string prefix) {
 
         }else if(event.custom_id == "rlp"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "sl"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "b"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "bw"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "h"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "th"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "s"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "sa"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "ns"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "hb"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "br"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "bl"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "bb"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "mv"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "sh"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "schw"){
 
-        }else if(event.custom_id == ""){
+        }else if(event.custom_id == "oest"){
 
         }
     });
@@ -492,10 +495,6 @@ void bot::run(std::string token, std::string prefix) {
         perm.deny = 0;
 
         ticketChannel.permission_overwrites.push_back(perm);
-
-
-
-
 
         dpp::embed emb = dpp::embed().
                 set_author(bot.me.username, "https://x54x6fx6d.me/", bot.me.get_avatar_url()).
@@ -614,6 +613,21 @@ void bot::run(std::string token, std::string prefix) {
                 set_timestamp(event.added.joined_at).
                 set_description(event.added.get_mention() + " Willkommen auf Devora!");
         bot.message_create(dpp::message(Config->welcomeChannel(), emb));
+
+        try
+        {
+            SQLite::Database    db("../levelsystem.db3", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);            SQLite::Statement   query(db, "INSERT INTO level (user_id, xp, level) VALUES (" + std::to_string(event.added.user_id) + ", 0, 0);");
+
+            while (query.executeStep())
+            {
+                std::cout << "Added " << event.added.get_mention() << " as " << event.added.user_id << " to levelsystem" << std::endl;
+            }
+        }
+        catch (std::exception& e)
+        {
+            std::cout << "exception: " << e.what() << std::endl;
+        }
+
     });
 
     bot.on_guild_role_create([&bot](const dpp::guild_role_create_t& event){
@@ -660,27 +674,31 @@ void bot::run(std::string token, std::string prefix) {
     });
 
     bot.on_message_create([&](const dpp::message_create_t& event){
-        dpp::message* m = new dpp::message();
-        *m = event.msg;
-        message_cache.store(m);
+        try
+        {
+            SQLite::Database    db("../levelsystem.db3", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);
+            SQLite::Statement   query(db, "SELECT xp, level FROM level WHERE user_id IN (" + std::to_string(event.msg.author.id) + ");");
 
-        std::stringstream ss(event.msg.content);
-        std::string cmd;
-        dpp::snowflake msg_id;
-        ss >> cmd;
-
-
-        std::string commandName = event.msg.content;
-        if (cmd == Config->prefix() + "guildInfo"){
-            ss >> msg_id;
-            dpp::message* find_message = message_cache.find(msg_id);
-
-            dpp::embed embed = dpp::embed().
-                    set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
-                    set_title("Guild Info").
-                    set_color(dpp::colors::blue);
-
-            bot.message_create(dpp::message(event.msg.channel_id, embed).set_reference(event.msg.id));
+            while (query.executeStep())
+            {
+                int xp = query.getColumn(0).getInt() + 20;
+                int level = query.getColumn(1).getInt();
+                if (xp >= 500){
+                    SQLite::Statement qr(db, "UPDATE level SET xp = 0, level = " + std::to_string(level + 1) + " WHERE user_id = " + std::to_string(event.msg.author.id) + ";");
+                    while (qr.executeStep()){
+                        std::cout << "reached new level!";
+                    }
+                }else {
+                    SQLite::Statement qr(db, "UPDATE level SET xp = " + std::to_string(xp) + " WHERE user_id = " + std::to_string(event.msg.author.id) + ";");
+                    while (qr.executeStep()){
+                        std::cout << "more xp!";
+                    }
+                }
+            }
+        }
+        catch (std::exception& e)
+        {
+            std::cout << "exception: " << e.what() << std::endl;
         }
     });
 
