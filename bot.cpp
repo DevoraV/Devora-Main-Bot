@@ -619,7 +619,8 @@ void bot::run(std::string token, std::string prefix) {
 
         try
         {
-            SQLite::Database    db("../levelsystem.db3", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);            SQLite::Statement   query(db, "INSERT INTO level (user_id, xp, level) VALUES (" + std::to_string(event.added.user_id) + ", 0, 0);");
+            SQLite::Database    db("../levelsystem.db3", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);
+            SQLite::Statement   query(db, "INSERT INTO level (user_id, xp, level) VALUES (" + std::to_string(event.added.user_id) + ", 0, 0);");
 
             while (query.executeStep())
             {
