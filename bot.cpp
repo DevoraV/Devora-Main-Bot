@@ -166,6 +166,26 @@ void bot::run(std::string token, std::string prefix) {
                                     set_id("terraria")
                     )
             ));
+        }else if(event.command.get_command_name() == "level"){
+            SQLite::Database    db("../levelsystem.db3", SQLite::OPEN_READWRITE|SQLite::OPEN_CREATE);
+            SQLite::Statement   query(db, "SELECT xp, level FROM level WHERE user_id IN (" + std::to_string(event.command.usr.id) + ");");
+
+            while (query.executeStep()) {
+                int xp = query.getColumn(0).getInt();
+                int level = query.getColumn(1).getInt();
+                dpp::embed emb = dpp::embed()
+                        .set_color(dpp::colors::blue)
+                        .set_title("Your current Level")
+                        .add_field(
+                                "Current Level",
+                                std::to_string(level)
+                                )
+                                .add_field(
+                                        "Current XP",
+                                        std::to_string(xp) + "/500"
+                                        );
+                event.reply(dpp::message(event.command.channel_id, emb).set_flags(dpp::m_ephemeral));
+            }
         }
     });
     bot.on_button_click([&bot](const dpp::button_click_t& event){
@@ -439,7 +459,7 @@ void bot::run(std::string token, std::string prefix) {
             dpp::slashcommand rules("rules", "sends rules", bot.me.id);
             dpp::slashcommand selfroles("selfroles", "sends selfroles embeds", bot.me.id);
             dpp::slashcommand lockVC("lockVC", "locks your vc", bot.me.id);
-            dpp::slashcommand bundeslaender("selfroles2", "bundesländer", bot.me.id);
+            dpp::slashcommand viewXP("level", "displays your level", bot.me.id);
             dpp::slashcommand setMaxUsers("setMaxUsers", "sets the maximum of users in your vc", bot.me.id);
             setMaxUsers.add_option(
                     dpp::command_option(dpp::co_integer, "maximum", "maximum users")
@@ -454,7 +474,7 @@ void bot::run(std::string token, std::string prefix) {
             bot.global_command_create(lockVC);
             bot.global_command_create(setMaxUsers);
             bot.global_command_create(kickUser);
-            bot.global_command_create(bundeslaender);
+            bot.global_command_create(viewXP);
         }
     });
 
