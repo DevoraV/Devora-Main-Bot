@@ -26,6 +26,7 @@
 
 class roles {
 public:
+    /// GAMES
     dpp::snowflake csgo();
     dpp::snowflake valorant();
     dpp::snowflake genshin();
@@ -36,6 +37,7 @@ public:
     dpp::snowflake fallguys();
     dpp::snowflake roblox();
     dpp::snowflake terraria();
+
 };
 
 inline std::unique_ptr<roles>Roles;

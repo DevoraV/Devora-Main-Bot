@@ -94,7 +94,7 @@ void bot::run(std::string token, std::string prefix) {
                                     set_id("acceptedRules")
                     )
             ));
-        } else if (event.command.get_command_name() == "selfroles"){
+        } else if (event.command.get_command_name() == "selfroles") {
             dpp::embed favGames = dpp::embed().
                     set_timestamp(event.command.get_creation_time()).
                     set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
@@ -166,111 +166,6 @@ void bot::run(std::string token, std::string prefix) {
                                     set_id("terraria")
                     )
             ));
-        }else if(event.command.get_command_name() == "bundeslaender"){
-            dpp::embed emb = dpp::embed().
-                    set_title("Wähle dein Land/Bundesland aus!").
-                    set_color(dpp::colors::blue).
-                    set_author(bot.me.username, "https://tommy31.social/", bot.me.get_avatar_url()).
-                    set_timestamp(event.command.get_creation_time());
-
-            bot.message_create(dpp::message(event.command.channel_id, emb).add_component(
-                    dpp::component().add_component(
-                            dpp::component().set_label("NRW").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("nrw")
-                            ).add_component(
-                                    dpp::component().set_label("Rheinland-Pfalz").
-                                            set_type(dpp::cot_button).
-                                            set_style(dpp::cos_primary).
-                                            set_id("rlp")
-                                    ).add_component(
-                            dpp::component().set_label("Saarland").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("sl")
-                    ).add_component(
-                            dpp::component().set_label("Bayern").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("b")
-                    ).add_component(
-                            dpp::component().set_label("Baden-Würtemberg").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("bw")
-                    ).add_component(
-                            dpp::component().set_label("Hessen").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("h")
-                    ).add_component(
-                            dpp::component().set_label("Thüringen").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("th")
-                    ).add_component(
-                            dpp::component().set_label("Sachsen").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("s")
-                    ).add_component(
-                            dpp::component().set_label("Sachsen-Anhalt").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("sa")
-                    ).add_component(
-                            dpp::component().set_label("Niedersachsen").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("ns")
-                    ).add_component(
-                            dpp::component().set_label("hamburg").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("hb")
-                    ).add_component(
-                            dpp::component().set_label("bremen").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("br")
-                    ).add_component(
-                            dpp::component().set_label("Berlin").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("bl")
-                    ).add_component(
-                            dpp::component().set_label("Brandenburg").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("bb")
-                    ).add_component(
-                            dpp::component().set_label("Mecklenburg-Vorpommern").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("mv")
-                    ).add_component(
-                            dpp::component().set_label("Schleswig-Holstein").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("sh")
-                    ).add_component(
-                            dpp::component().set_label("Schweiz").
-                                    set_emoji("🇨🇭").
-                                    set_type(dpp::cot_button).
-                                    set_style(dpp::cos_primary).
-                                    set_id("schw")
-                    ).add_component(
-                            dpp::component().set_label("Österreich").
-                                    set_type(dpp::cot_button).
-                                    set_emoji("🇦🇹").
-                                    set_style(dpp::cos_primary).
-                                    set_id("oest")
-                    )
-                    ));
-        }
-        else if(event.command.get_command_name() == "lockvc"){
-
         }
     });
     bot.on_button_click([&bot](const dpp::button_click_t& event){
@@ -361,7 +256,7 @@ void bot::run(std::string token, std::string prefix) {
             bot.guild_member_add_role(event.command.guild_id, event.command.usr.id, Config->userRole());
             event.reply(dpp::message(event.command.channel_id, "Du hast die Regeln akzeptiert!").set_flags(dpp::m_ephemeral));
         }else if(event.custom_id == "csgo"){
-            if (checkPerms(event.command, Roles->csgo()) == true){
+            if (checkPerms(event.command, Roles->csgo())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->csgo());
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``CSGO`` aus deinen Rollen enfernt!").set_flags(dpp::m_ephemeral));
             }else {
@@ -369,7 +264,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``CSGO`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "valorant"){
-            if (checkPerms(event.command, Roles->valorant()) == true){
+            if (checkPerms(event.command, Roles->valorant())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->valorant());
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``Valorant`` aus deinen Rollen entfernt!").set_flags(dpp::m_ephemeral));
             }else {
@@ -377,7 +272,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``Valorant`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "genshin"){
-            if (checkPerms(event.command, Roles->genshin()) == true){
+            if (checkPerms(event.command, Roles->genshin())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->genshin());
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``Genshin Impact`` aus deinen Rollen entfernt!").set_flags(dpp::m_ephemeral));
             }else {
@@ -385,7 +280,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Ich habe ``Genshin Impact`` deinen Rollen hinzugefügt!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "cod"){
-            if (checkPerms(event.command, Roles->cod()) == true){
+            if (checkPerms(event.command, Roles->cod())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->cod());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Call of Duty`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
@@ -393,7 +288,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Added ``Call of Duty`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "battlefield"){
-            if (checkPerms(event.command, Roles->battlefield()) == true){
+            if (checkPerms(event.command, Roles->battlefield())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->battlefield());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Battlefield`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
@@ -401,7 +296,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Added ``Battlefield`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "darksouls"){
-            if (checkPerms(event.command, Roles->darksouls()) == true){
+            if (checkPerms(event.command, Roles->darksouls())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->darksouls());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Darksouls``role from you!").set_flags(dpp::m_ephemeral));
             }else {
@@ -409,7 +304,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Added ``Darksouls`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "mc"){
-            if (checkPerms(event.command, Roles->minecraft()) == true){
+            if (checkPerms(event.command, Roles->minecraft())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->minecraft());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Minecraft`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
@@ -417,7 +312,7 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Added ``Minecraft`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "fallguys"){
-            if (checkPerms(event.command, Roles->fallguys()) == true){
+            if (checkPerms(event.command, Roles->fallguys())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->fallguys());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Fall Guys`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
@@ -425,57 +320,23 @@ void bot::run(std::string token, std::string prefix) {
                 event.reply(dpp::message(event.command.channel_id, "Added ``Fall Guys`` role to you!").set_flags(dpp::m_ephemeral));
             }
         }else if(event.custom_id == "roblox"){
-            if (checkPerms(event.command, Roles->roblox()) == true){
+            if (checkPerms(event.command, Roles->roblox())){
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->roblox());
                 event.reply(dpp::message(event.command.channel_id, "Removed ``Roblox`` role from you!").set_flags(dpp::m_ephemeral));
             }else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->roblox());
                 event.reply(dpp::message(event.command.channel_id, "Added ``Roblox`` role to you!").set_flags(dpp::m_ephemeral));
             }
-        }else if(event.custom_id == "terraria"){
-            if (checkPerms(event.command, Roles->terraria()) == true){
+        }else if(event.custom_id == "terraria") {
+            if (checkPerms(event.command, Roles->terraria())) {
                 bot.guild_member_remove_role(event.command.guild_id, event.command.member.user_id, Roles->terraria());
-                event.reply(dpp::message(event.command.channel_id, "Removed ``Terraria`` role from you!").set_flags(dpp::m_ephemeral));
-            }else {
+                event.reply(dpp::message(event.command.channel_id, "Removed ``Terraria`` role from you!").set_flags(
+                        dpp::m_ephemeral));
+            } else {
                 bot.guild_member_add_role(event.command.guild_id, event.command.member.user_id, Roles->terraria());
-                event.reply(dpp::message(event.command.channel_id, "Added ``Terraria`` role to you!").set_flags(dpp::m_ephemeral));
+                event.reply(dpp::message(event.command.channel_id, "Added ``Terraria`` role to you!").set_flags(
+                        dpp::m_ephemeral));
             }
-        }else if(event.custom_id == "nrw"){
-
-        }else if(event.custom_id == "rlp"){
-
-        }else if(event.custom_id == "sl"){
-
-        }else if(event.custom_id == "b"){
-
-        }else if(event.custom_id == "bw"){
-
-        }else if(event.custom_id == "h"){
-
-        }else if(event.custom_id == "th"){
-
-        }else if(event.custom_id == "s"){
-
-        }else if(event.custom_id == "sa"){
-
-        }else if(event.custom_id == "ns"){
-
-        }else if(event.custom_id == "hb"){
-
-        }else if(event.custom_id == "br"){
-
-        }else if(event.custom_id == "bl"){
-
-        }else if(event.custom_id == "bb"){
-
-        }else if(event.custom_id == "mv"){
-
-        }else if(event.custom_id == "sh"){
-
-        }else if(event.custom_id == "schw"){
-
-        }else if(event.custom_id == "oest"){
-
         }
     });
 
@@ -508,18 +369,9 @@ void bot::run(std::string token, std::string prefix) {
                 "Reason",
                 "test"
         );
-
-
-
-
         std::string v = std::get<std::string>(event.components[0].components[0].value);
         dpp::message m;
         dpp::snowflake tChId;
-
-
-
-
-
         dpp::snowflake ch;
         bot.channel_create(ticketChannel, [event, &bot, v, &tChId, &ticketChannel, &ch](const dpp::confirmation_callback_t &callback){
             if (callback.is_error()){
@@ -691,7 +543,21 @@ void bot::run(std::string token, std::string prefix) {
                     SQLite::Statement qr(db, "UPDATE level SET xp = 0, level = " + std::to_string(level + 1) + " WHERE user_id = " + std::to_string(event.msg.author.id) + ";");
                     while (qr.executeStep()){
                         std::cout << "reached new level!";
+
                     }
+                    dpp::embed levelemb = dpp::embed()
+                            .set_color(dpp::colors::blue)
+                            .set_description("Du bist ein Level aufgestiegen!")
+                            .set_title("Level Up!")
+                            .add_field(
+                                    "Level",
+                                    std::to_string(level + 1)
+                                    )
+                                    .add_field(
+                                            "XP",
+                                            std::to_string(0)
+                                            );
+                    bot.message_create(dpp::message(1032291491533570108, levelemb));
                 }else {
                     SQLite::Statement qr(db, "UPDATE level SET xp = " + std::to_string(xp) + " WHERE user_id = " + std::to_string(event.msg.author.id) + ";");
                     while (qr.executeStep()){
