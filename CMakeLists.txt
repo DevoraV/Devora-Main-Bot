@@ -3,6 +3,7 @@ project(Main-Bot)
 
 add_subdirectory(libs/DPP)
 add_subdirectory(libs/SQLiteCpp)
+add_subdirectory(libs/curlpp-0.8.1)
 
 add_executable(${PROJECT_NAME}
         main.cpp
@@ -24,7 +25,7 @@ find_package(Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME}
         dpp
         SQLiteCpp
-        dl
+        curlpp
         sqlite3
         ${CMAKE_THREAD_LIBS_INIT}
         )
@@ -32,6 +33,7 @@ target_link_libraries(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PRIVATE
         libs/DPP/include
         libs/SQLiteCpp/include
+        libs/curlpp-0.8.1/include
         )
 
 set_target_properties(${PROJECT_NAME} PROPERTIES

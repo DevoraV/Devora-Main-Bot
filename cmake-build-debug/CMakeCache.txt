@@ -41,6 +41,9 @@ CMAKE_CODEBLOCKS_EXECUTABLE:FILEPATH=CMAKE_CODEBLOCKS_EXECUTABLE-NOTFOUND
 // Enter e.g. -j<some_number> to get parallel builds
 CMAKE_CODEBLOCKS_MAKE_ARGUMENTS:STRING=-j8
 
+//Enable colored diagnostics throughout.
+CMAKE_COLOR_DIAGNOSTICS:BOOL=ON
+
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
@@ -100,6 +103,9 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+
+//Value Computed by CMake.
+CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/CMakeFiles/pkgRedirects
 
 //User executables (bin)
 CMAKE_INSTALL_BINDIR:PATH=bin
@@ -308,6 +314,18 @@ CPACK_SOURCE_ZIP:BOOL=OFF
 //Path to a program.
 CPPCHECK_EXECUTABLE:FILEPATH=CPPCHECK_EXECUTABLE-NOTFOUND
 
+//The directory containing a CMake configuration file for CURL.
+CURL_DIR:PATH=CURL_DIR-NOTFOUND
+
+//Path to a file.
+CURL_INCLUDE_DIR:PATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include
+
+//Path to a library.
+CURL_LIBRARY_DEBUG:FILEPATH=CURL_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+CURL_LIBRARY_RELEASE:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd
+
 //Build the test program
 DPP_BUILD_TEST:BOOL=ON
 
@@ -429,6 +447,15 @@ ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 ZLIB_LIBRARY_RELEASE:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/lib/libz.tbd
 
 //Value Computed by CMake
+curlpp_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/libs/curlpp-0.8.1
+
+//Value Computed by CMake
+curlpp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+curlpp_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/libs/curlpp-0.8.1
+
+//Value Computed by CMake
 libdpp_BINARY_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake-build-debug/libs/DPP
 
 //Value Computed by CMake
@@ -436,6 +463,9 @@ libdpp_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 libdpp_SOURCE_DIR:STATIC=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/libs/DPP
+
+//Path to a library.
+pkgcfg_lib_PC_CURL_curl:FILEPATH=/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd
 
 //Path to a library.
 pkgcfg_lib_sodium_PKG_sodium:FILEPATH=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib/libsodium.dylib
@@ -466,9 +496,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/Users/tommy31/Desktop/Devora/Devora-Main-Bot/cmake
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=22
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=24
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=3
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -593,7 +623,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=4
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=6
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -605,7 +635,7 @@ CMAKE_RANLIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_READELF
 CMAKE_READELF-ADVANCED:INTERNAL=1
 //Path to CMake installation.
-CMAKE_ROOT:INTERNAL=/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.22
+CMAKE_ROOT:INTERNAL=/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.24
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS
 CMAKE_SHARED_LINKER_FLAGS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_SHARED_LINKER_FLAGS_DEBUG
@@ -648,6 +678,16 @@ CPACK_SOURCE_TXZ-ADVANCED:INTERNAL=1
 CPACK_SOURCE_TZ-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CPACK_SOURCE_ZIP
 CPACK_SOURCE_ZIP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_DIR
+CURL_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_INCLUDE_DIR
+CURL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_LIBRARY_DEBUG
+CURL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CURL_LIBRARY_RELEASE
+CURL_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//Details about finding CURL
+FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/lib/libcurl.tbd][/Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk/usr/include][c ][v7.79.1()]
 //Details about finding OpenSSL
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/opt/homebrew/opt/openssl/lib/libcrypto.dylib][/opt/homebrew/opt/openssl/include][c ][v3.0.5()]
 //Details about finding Opus
@@ -676,6 +716,41 @@ OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
 OPUS_INCLUDE_DIRS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPUS_LIBRARIES
 OPUS_LIBRARIES-ADVANCED:INTERNAL=1
+PC_CURL_CFLAGS:INTERNAL=
+PC_CURL_CFLAGS_I:INTERNAL=
+PC_CURL_CFLAGS_OTHER:INTERNAL=
+PC_CURL_FOUND:INTERNAL=1
+PC_CURL_INCLUDEDIR:INTERNAL=/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr/include
+PC_CURL_INCLUDE_DIRS:INTERNAL=
+PC_CURL_LDFLAGS:INTERNAL=-L/usr/lib;-lcurl
+PC_CURL_LDFLAGS_OTHER:INTERNAL=
+PC_CURL_LIBDIR:INTERNAL=/usr/lib
+PC_CURL_LIBRARIES:INTERNAL=curl
+PC_CURL_LIBRARY_DIRS:INTERNAL=/usr/lib
+PC_CURL_LIBS:INTERNAL=
+PC_CURL_LIBS_L:INTERNAL=
+PC_CURL_LIBS_OTHER:INTERNAL=
+PC_CURL_LIBS_PATHS:INTERNAL=
+PC_CURL_MODULE_NAME:INTERNAL=libcurl
+PC_CURL_PREFIX:INTERNAL=/Library/Developer/CommandLineTools/SDKs/MacOSX12.sdk/usr
+PC_CURL_STATIC_CFLAGS:INTERNAL=
+PC_CURL_STATIC_CFLAGS_I:INTERNAL=
+PC_CURL_STATIC_CFLAGS_OTHER:INTERNAL=
+PC_CURL_STATIC_INCLUDE_DIRS:INTERNAL=
+PC_CURL_STATIC_LDFLAGS:INTERNAL=-L/usr/lib;-lcurl;-lldap;-lz
+PC_CURL_STATIC_LDFLAGS_OTHER:INTERNAL=
+PC_CURL_STATIC_LIBDIR:INTERNAL=
+PC_CURL_STATIC_LIBRARIES:INTERNAL=curl;ldap;z
+PC_CURL_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib
+PC_CURL_STATIC_LIBS:INTERNAL=
+PC_CURL_STATIC_LIBS_L:INTERNAL=
+PC_CURL_STATIC_LIBS_OTHER:INTERNAL=
+PC_CURL_STATIC_LIBS_PATHS:INTERNAL=
+PC_CURL_VERSION:INTERNAL=7.79.1
+PC_CURL_libcurl_INCLUDEDIR:INTERNAL=
+PC_CURL_libcurl_LIBDIR:INTERNAL=
+PC_CURL_libcurl_PREFIX:INTERNAL=
+PC_CURL_libcurl_VERSION:INTERNAL=
 //ADVANCED property for variable: PKG_CONFIG_ARGN
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
@@ -717,12 +792,16 @@ _OPENSSL_openssl_INCLUDEDIR:INTERNAL=
 _OPENSSL_openssl_LIBDIR:INTERNAL=
 _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
+__pkg_config_arguments_PC_CURL:INTERNAL=QUIET;libcurl
 __pkg_config_arguments_sodium_PKG:INTERNAL=QUIET;libsodium
+__pkg_config_checked_PC_CURL:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
 __pkg_config_checked_sodium_PKG:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_PC_CURL_curl
+pkgcfg_lib_PC_CURL_curl-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_sodium_PKG_sodium
 pkgcfg_lib_sodium_PKG_sodium-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/opt/homebrew/Cellar/libsodium/1.0.18_1/lib
+prefix_result:INTERNAL=alt-svc;AsynchDNS;GSS-API;HSTS;HTTP2;HTTPS-proxy;IPv6;Kerberos;Largefile;libz;MultiSSL;NTLM;NTLM_WB;SPNEGO;SSL;UnixSockets
 //ADVANCED property for variable: sodium_INCLUDE_DIR
 sodium_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: sodium_LIBRARY_DEBUG

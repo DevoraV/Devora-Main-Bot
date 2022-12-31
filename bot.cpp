@@ -22,6 +22,7 @@
 /// Project
 #include "config.h"
 #include "roles.h"
+#include "curlpp/Options.hpp"
 
 /// Libraries
 #include <iostream>
@@ -29,6 +30,10 @@
 #include <chrono>
 #include <thread>
 #include <stdio.h>
+
+/// CURL
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Option.hpp>
 
 /// SQL
 #include <SQLiteCpp/SQLiteCpp.h>
@@ -186,6 +191,22 @@ void bot::run(std::string token, std::string prefix) {
                                         );
                 event.reply(dpp::message(event.command.channel_id, emb).set_flags(dpp::m_ephemeral));
             }
+        }else if (event.command.get_command_name() == "spin"){
+            curlpp::Cleanup cleanup;
+            std::ostringstream os;
+            os << curlpp::options::Url(std::string("http://localhost:3847/random/number/0/9"));
+
+            std::string apiReq = os.str();
+            int bet = std::stoi(std::get<std::string>(event.get_parameter("Input")));
+            int winInt = std::stoi(apiReq);
+
+            if (bet == winInt){
+                event.reply("Won!");
+            }else {
+                event.reply("Lost!");
+            }
+
+            event.reply(dpp::message(event.command.channel_id, apiReq));
         }
     });
     bot.on_button_click([&bot](const dpp::button_click_t& event){
@@ -222,6 +243,9 @@ void bot::run(std::string token, std::string prefix) {
                         std::cout << (it->second.content) << std::endl;
                         msg.append(it->second.content + "\n");
                     }
+
+                    std::string folder = "./transcripts/";
+
 
                     /*
                     auto command = "api_dev_key=rqICb8hqI9pKPqqrgF5hYNcSXGwQUehN&api_paste_code=" + msg + "&api_option=paste";
@@ -468,6 +492,10 @@ void bot::run(std::string token, std::string prefix) {
             kickUser.add_option(
                     dpp::command_option(dpp::co_user, "user", "user to kick")
             );
+            dpp::slashcommand spinWheel("spin", "spins the wheel", bot.me.id);
+            spinWheel.add_option(
+                    dpp::command_option(dpp::co_integer, "Input", "Money you want to put in")
+                    );
             bot.global_command_create(ticket);
             bot.global_command_create(rules);
             bot.global_command_create(selfroles);
@@ -475,6 +503,7 @@ void bot::run(std::string token, std::string prefix) {
             bot.global_command_create(setMaxUsers);
             bot.global_command_create(kickUser);
             bot.global_command_create(viewXP);
+            bot.global_command_create(spinWheel);
         }
     });
 
