@@ -18,8 +18,8 @@
 
 
 std::string config::token() {
-    //return "OTk3NjQzNjgxNzAyMDg0NjMw.G4t5Tj.2bgtYbu4xn3kFy2fdjwQ-_IZowxNMMTkwmtzpk";
-    return "MTAxODIyNzY2NTI0MjY5NzgxOA.GfTQYD.DcTSQptmxsVBI_ptJbH8INUXLdiZXjfGt2GNt8";
+    std::string tk = "YOUR TOKEN";
+    return tk;
 }
 
 std::string config::prefix() {
